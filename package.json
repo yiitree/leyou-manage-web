@@ -5,12 +5,12 @@
   "author": "huge0612 <huyi612@163.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js  --disableHostCheck=true",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "echarts": "^4.1.0",
     "element-ui": "^2.3.2",
     "iview": "^2.11.0",

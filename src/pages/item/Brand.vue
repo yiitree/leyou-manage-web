@@ -1,14 +1,28 @@
 <template>
   <v-card>
+
+    <!-- 卡片的头部 -->
     <v-card-title>
       <v-btn color="primary" @click="addBrand">新增品牌</v-btn>
       <!--搜索框，与search属性关联-->
       <v-spacer/>
       <v-flex xs3>
-      <v-text-field label="输入关键字搜索" v-model.lazy="search" append-icon="search" hide-details/>
+       <v-text-field label="输入关键字搜索" v-model.lazy="search" append-icon="search" hide-details/>
       </v-flex>
     </v-card-title>
+
     <v-divider/>
+
+    <!--卡片的中部-->
+    <!--
+      table属性设置：
+      - headers：表头信息，是一个数组
+      - items：要在表格中展示的数据，数组结构，每一个元素是一行
+      - search：搜索过滤字段，用不到，暂时不管
+      - pagination.sync：分页信息，包含了当前页，每页大小，排序字段，排序方式等。加上.sync代表服务端排序，当用户点击分页条时，该对象的值会跟着变化。监控这个值，并在这个值变化时去服务端查询，即可实现页面数据动态加载了。
+      - total-items：总条数
+      - loading：boolean类型，true：代表数据正在加载，会有进度条。false：数据加载完毕。
+    -->
     <v-data-table
       :headers="headers"
       :items="brands"
@@ -17,6 +31,7 @@
       :loading="loading"
       class="elevation-1"
     >
+      <!--给items和totalItems赋值-->
       <template slot="items" slot-scope="props">
         <td class="text-xs-center">{{ props.item.id }}</td>
         <td class="text-xs-center">{{ props.item.name }}</td>
@@ -57,17 +72,16 @@
 <script>
   // 导入自定义的表单组件
   import BrandForm from './BrandForm'
-
   export default {
     name: "brand",
     data() {
       return {
-        search: '', // 搜索过滤字段
+        search: '',     // 搜索过滤字段
         totalBrands: 0, // 总条数
-        brands: [], // 当前页品牌数据
-        loading: true, // 是否在加载中
+        brands: [],     // 当前页品牌数据
+        loading: true,  // 是否在加载中
         pagination: {}, // 分页信息
-        headers: [
+        headers: [      // 头信息
           {text: 'id', align: 'center', value: 'id',sortable: true},
           {text: '名称', align: 'center', sortable: false, value: 'name'},
           {text: 'LOGO', align: 'center', sortable: false, value: 'image'},
@@ -145,7 +159,7 @@
       }
     },
     components:{
-        BrandForm
+      BrandForm
     }
   }
 </script>

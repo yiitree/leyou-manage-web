@@ -128,7 +128,7 @@ export default {
         .then(({ data }) => {
           data.forEach(p => {
               p.segments = p.segments ? p.segments.split(",").map(s => s.split("-")) : [];
-          })
+          });
           this.params = data;
         })
         .catch(() => {
@@ -147,7 +147,7 @@ export default {
           segments:[],
           numeric:false,
           searching:false,
-          generic:false}
+          generic:false};
       this.show = true;
     },
     deleteParam(id) {
@@ -168,7 +168,7 @@ export default {
     save(){
         const p = {};
         Object.assign(p, this.param);
-        p.segments = p.segments.map(s => s.join("-")).join(",")
+        p.segments = p.segments.map(s => s.join("-")).join(",");
         this.$http({
             method: this.isEdit ? 'put' : 'post',
             url: '/item/spec/param',

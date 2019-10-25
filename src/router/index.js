@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 
-Vue.use(Router)
+Vue.use(Router);
 
 function route (path, file, name, children) {
   return {

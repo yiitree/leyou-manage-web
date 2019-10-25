@@ -114,7 +114,7 @@
               const node = {
                 value: d[this.itemValue],
                 label: d[this.itemText]
-              }
+              };
               if (d.isParent) {
                 node['children'] = [];
                 node['loading'] = false;
@@ -126,7 +126,7 @@
         })
       },
       remove(item) {
-        this.selected = this.selected.filter(o => o.value !== item.value)
+        this.selected = this.selected.filter(o => o.value !== item.value);
         this.$emit("input", this.transfer(this.selected))
       },
       transfer(arr) {
@@ -146,7 +146,7 @@
     created() {
       this.loadData(0).then(data => {
         this.options = data;
-      })
+      });
       if(this.required){
         this.defaultRules.push(v => v.length > 0 || this.label + "不能为空");
       }

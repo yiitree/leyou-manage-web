@@ -329,7 +329,7 @@ export default {
             spec.options.forEach((option, i) => {
               const obj = JSON.parse(JSON.stringify(o));
               obj[spec.name] = {v:option, id:spec.id};
-              obj.indexes = (obj.indexes || '') + '_' +  i
+              obj.indexes = (obj.indexes || '') + '_' +  i;
               if (index === arr.length - 1) {
                 obj.indexes = obj.indexes.substring(1);
                 // 如果发现是最后一组，则添加价格、库存等字段

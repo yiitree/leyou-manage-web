@@ -97,7 +97,7 @@
         // 当前项被选中
         this.isSelected = true;
         // 保存当前选中项
-        this.nodes.selected = this
+        this.nodes.selected = this;
 
         // 客户自己的点击事件回调
         this.handleClick(this.model);
@@ -139,7 +139,7 @@
           parentId: this.model.id,
           isParent: false,
           sort:this.model.children? this.model.children.length + 1:1
-        }
+        };
         if (!this.model.isParent) {
           Vue.set(this.model, 'children', [child]);
           this.model.isParent = true;
